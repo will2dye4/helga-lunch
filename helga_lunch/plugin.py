@@ -132,7 +132,7 @@ def get_most_popular(args):
     return [
         '{index}: {name} ({count} times)'.format(index=i+1, name=record['name'], count=record['visit_count'])
         for i, record in enumerate(most_popular_restaurants)
-    ]
+    ]   # TODO show 'time' instead of 'times' if count == 1
 
 
 def visit_location(args):
@@ -157,7 +157,7 @@ def visit_location(args):
     return random.choice(ACKS)
 
 
-# @command('lunch', aliases=['l', 'food'], help='Ask helga where to eat')
+@command('lunch', aliases=['l', 'food'], help='Ask helga where to eat')
 def lunch(client, channel, nick, message, cmd, args):
     # TODO - implement listing of recent suggestions, allow adding restaurants manually?
     if not cmd or cmd in ('suggest', 'search'):
