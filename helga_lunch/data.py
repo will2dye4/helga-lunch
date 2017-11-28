@@ -19,9 +19,9 @@ class LunchRecord(object):
         self.record = record
 
     @classmethod
-    def get_empty_record(cls, business_id, name):
+    def get_empty_record(cls, location_id, name):
         return cls({
-            'business_id': business_id,
+            'location_id': location_id,
             'name': name,
             'last_suggested': None,
             'suggestion_count': 0,
@@ -54,8 +54,8 @@ class LunchRecord(object):
         return [cls(l) for l in db.lunch_location.find({'name': name})]
 
     @classmethod
-    def get_by_id(cls, business_id):
-        location = db.lunch_location.find_one({'business_id': business_id})
+    def get_by_id(cls, location_id):
+        location = db.lunch_location.find_one({'location_id': location_id})
         if location:
             return cls(location)
         return None
