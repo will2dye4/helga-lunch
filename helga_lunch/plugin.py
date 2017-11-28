@@ -157,9 +157,10 @@ def visit_location(args):
     return random.choice(ACKS)
 
 
+# TODO - update help string (usage)
 @command('lunch', aliases=['l', 'food'], help='Ask helga where to eat')
 def lunch(client, channel, nick, message, cmd, args):
-    # TODO - implement listing of recent suggestions, allow adding restaurants manually?
+    # TODO - implement listing of recent suggestions, help subcmd, allow adding restaurants manually?
     if args:
         subcmd = args[0]
         args = args[1:]
