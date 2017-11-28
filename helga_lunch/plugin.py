@@ -160,13 +160,19 @@ def visit_location(args):
 @command('lunch', aliases=['l', 'food'], help='Ask helga where to eat')
 def lunch(client, channel, nick, message, cmd, args):
     # TODO - implement listing of recent suggestions, allow adding restaurants manually?
-    if not cmd or cmd in ('suggest', 'search'):
+    if args:
+        subcmd = args[0]
+        args = args[1:]
+    else:
+        subcmd = 'suggest'
+
+    if subcmd in ('suggest', 'search'):
         return get_suggestion(args)
-    elif cmd in ('history', 'latest'):
+    elif subcmd in ('history', 'latest'):
         return get_history(args)
-    elif cmd == 'top':
+    elif subcmd == 'top':
         return get_most_popular(args)
-    elif cmd in ('log', 'record'):
+    elif subcmd in ('log', 'record'):
         return visit_location(args)
     else:
         return "I don't know about that command, {}".format(nick)
